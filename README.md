@@ -5,27 +5,38 @@
 - https://youtu.be/isTf9jK1yvA
 
 ## Requirements
-- Raspberry Pi 3 Model B
+
+- pc側
   - ubuntu16.04
-- Robot
-  - Rasp
-- 2 LEDs
-  - Left LED :GPIO25
-  - Right LED :GPIO24
+
+- ラズパイマウス(アールティ社)
+  - Raspberry Pi 3 Model B
+  - ubuntu16.04
+
+- レーザーレンジファインダー
+  - URG-04LX-UG01(北陽電機)
   
 ## Usage
+
+ラズパイマウス側
 ```
-cd led_device_driver_2
-make
-sudo insmod myled.ko
-sudo chmod 666 /dev/myled0
-echo 1 > /dev/myled0 //2LEDs flash
-echo 0 > /dev/myled0 //2LEDs solid
-echo 3 > /dev/myled0 //Left LED flash
-echo 2 > /dev/myled0 //Left LED solid
-echo 5 > /dev/myled0 //Right LED flash
-echo 4 > /dev/myled0 //Right LED solid
+roscore
+sudo apt install ros-kinetic-urg-node   //別のターミナルから
+rosrun urg_node urg_node
+
 ```
 
+PC側
+
+```
+git clone https://github.com/rikusekiuchi/urg_scan_least_square_method.git
+roscd urg_scan_least_square_method/script/
+chmod +x scandata_least_square_method_60.py
+chmod +x scandata_least_square_method_90.py
+rosrun urg_scan_least_square_method scandata_least_square_method_60.py
+rosrun urg_scan_least_square_method scandata_least_square_method_90.py
+```
+
+
 ## Licence
-This repository is licensed under the GPLv3 license
+This software is released under the MIT License, see LICENSE.txt.
