@@ -1,5 +1,9 @@
 # urg_scan_least_square_method
-測域センサを用いて、ロボットが壁に対してどの向きに向いているか調べるパッケージ
+- 測域センサを用いて、ロボットが壁に対してどの向きに向いているか調べるパッケージ
+- 測域センサで得られた距離のデータとレーザーが出る角度からx,y直行座標系に変換して最小二乗法により計算しています。
+- 壁に対して並行で右向きにロボットが向いている向きを0度として計測
+- 左右に45度ずつ、左右30度ずつの値を受け取り計算するプログラム(scandata_least_square_method_90.py , scandata_least_square_method_60.py)
+- resultに書かれている結果が計測した角度
 
 ## Demonstration
 - https://youtu.be/isTf9jK1yvA
@@ -23,7 +27,6 @@
 roscore
 sudo apt install ros-kinetic-urg-node   //別のターミナルから
 rosrun urg_node urg_node
-
 ```
 
 PC側
